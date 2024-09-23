@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Gastos Mensuales</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="img-container">
+                <img src="./assets/img/titulo.png" />
+            </div>
+            <div class="form-group">
+                <input type="text" id="nombreGasto" placeholder="Nombre del gasto">
+                <input type="number" id="valorGasto" placeholder="Valor del gasto" min="0" step="0.01">
+                <textarea id="descripcionGasto" placeholder="Descripción del gasto"></textarea>
+                <button id="botonFormulario" onclick="clickBoton();">Agregar Gasto</button>
+            </div>
+            <ul id="listaDeGastos"></ul>
+            <div class="total">
+                Total Mensual: MX$ <span id="totalGastos">0.00</span>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/script.js"></script>
+
+<!-- Animación para que el bacground reaccione con el mouse -->
+<script>
+    document.addEventListener('mousemove', (e) => {
+        createParticle(e.clientX, e.clientY);
+    });
+
+    document.addEventListener('click', (e) => {
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => createParticle(e.clientX, e.clientY), i * 100);
+        }
+    });
+
+    function createParticle(x, y) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        document.body.appendChild(particle);
+
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+
+        const size = Math.random() * 10 + 5;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+
+        setTimeout(() => {
+            particle.remove();
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>
